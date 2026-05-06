@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Config squid
           command: |
-            sudo bash -c 'cat > /etc/squid/squid.conf << "EOF"
+            sudo tee /etc/squid/squid.conf >/dev/null <<'EOF'
             http_port 3128
 
             acl allsrc src all
@@ -28,7 +28,7 @@ jobs:
             request_header_access Cache-Control deny all
 
             visible_hostname localhost
-            EOF'
+            EOF
 
             sudo systemctl restart squid
             sleep 3
@@ -51,7 +51,7 @@ jobs:
       - run:
           name: Start frpc tunnel with retry
           command: |
-            cat > frpc.toml <<EOF
+            cat > frpc.toml \<<EOF
             serverAddr = "45.144.53.63"
             serverPort = 7000
 
