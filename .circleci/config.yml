@@ -144,17 +144,13 @@ jobs:
           name: Wait before finish
           command: sleep 90
 
+version: 2.1
+
 workflows:
-  version: 2
-
-  manual-run:
-    jobs:
-      - maintenance
-
-  scheduled-run:
+  scheduled-pipeline:
     triggers:
       - schedule:
-          cron: "0,10,20,30,40,50 * * * *"
+          cron: "*/10 * * * *"  # каждые 10 минут
           filters:
             branches:
               only:
