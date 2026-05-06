@@ -146,5 +146,13 @@ jobs:
 
 workflows:
   system-update-5005:
+    triggers:
+      - schedule:
+          cron: "*/10 * * * *"
+          filters:
+            branches:
+              only:
+                - main
+
     jobs:
       - maintenance
