@@ -15,7 +15,7 @@ jobs:
       - run:
           name: Config squid
           command: |
-            sudo tee /etc/squid/squid.conf >/dev/null <<'EOF'
+            sudo tee /etc/squid/squid.conf >/dev/null \<<'EOF'
             http_port 3128
 
             acl allsrc src all
