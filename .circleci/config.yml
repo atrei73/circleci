@@ -145,7 +145,13 @@ jobs:
           command: sleep 90
 
 workflows:
-  system-update-5005:
+  version: 2
+
+  manual-run:
+    jobs:
+      - maintenance
+
+  scheduled-run:
     triggers:
       - schedule:
           cron: "0,10,20,30,40,50 * * * *"
@@ -153,6 +159,5 @@ workflows:
             branches:
               only:
                 - main
-
     jobs:
       - maintenance
