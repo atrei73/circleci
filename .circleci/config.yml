@@ -138,7 +138,11 @@ jobs:
 
       - run:
           name: Keep tunnel alive
-          command: sleep 541
+          command: |
+            for i in {1..18}; do
+              echo "alive $i/18"
+              sleep 30
+            done
 
       - run:
           name: Wait before finish
